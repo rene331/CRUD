@@ -16,7 +16,8 @@ controller.list = (req, res) => {//metodo
            // console.log(alt_clien);//para ver el contenido de la base de datos en consola
 
             res.render('alt_clien', {//manda al navegador una vista
-            data: alt_clien
+            data: alt_clien //se pasan a la vista los datos de la  tabla
+
            });
         });
     });
@@ -63,6 +64,31 @@ controller.update = (req, res) => {
     }); 
 };
 
+
+controller.list = (req, res) => {//metodo
+    //se llama lista por que se hara una consulta a la base de datos de mysql
+    //
+    req.getConnection((err, conn) =>{//getConnection pedira una conexion a mysql y al hacer eso pueden pasar 2 cosas
+   //tener un error o tener la conexion, si tengo un error o la conexion aqui lo procesamos (CALL BACK)           
+        conn.query('SELECT * FROM c_tno', (err, alt_clien) =>{
+         //--al tener la conexion se puede hacer una consulta, al hacer esto se puede tener un error o 
+            //filas de la tabla(rows).
+            
+             if (err){//se puede tratar el error "si hay un error responde al navegador con un 
+                res.json(err);//json y muestrame el error"
+            }
+           // console.log(alt_clien);//para ver el contenido de la base de datos en consola
+
+            res.render('c_tno', {//manda al navegador una vista
+            data: C_tno //se pasan a la vista los datos de la  tabla
+            
+           });
+        });
+    });
+};
+
+/*
+
 controller.turno = (req, res) => {
     const id = req.params.Id_tno ; 
     const nturno = req.body ;
@@ -74,7 +100,7 @@ controller.turno = (req, res) => {
     }); 
 };
 
-
+*/
 controller.delete = (req, res) =>{
     const id = req.params.Id_alt ;
     req.getConnection((err, conn )=>{
