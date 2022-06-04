@@ -52,37 +52,41 @@
                 </table>
            </div>
 
-           <div class="col-md-3">                
-             <form action= "/add" method="post"> <!-- se diseña el fomulario sin clase, si va a llevar action 
+            <div class="col-md-3">                
+            <form action= "/add" method="post"> <!-- se diseña el fomulario sin clase, si va a llevar action 
             que vallevar a algun lugar en este caso "/add" esta ruta se tendra que crear en el servidor atravez del
             metodo post (method="post"), por lo general un formulario manda datos desde el navegador al servidor-->
                 
-              <div class="form-group">
-                <input type ="text" name="Nombres" placeholder="Nombres" class="form-control">   
+            <div class="form-group">
+                <input type ="text" name="Nombres"          placeholder="Nombres"    class="form-control">   
             </div>
 
             <div class="form-group">
-                <input type ="text" name="Ap_Paterno" placeholder="A. Paterno" class="form-control"> 
+                <input type ="text" name="Ap_Paterno"       placeholder="A. Paterno" class="form-control"> 
             </div>
 
             <div class="form-group">
-                <input type ="text" name="Ap_Materno" placeholder="A. Materno" class="form-control">        
+                <input type ="text" name="Ap_Materno"       placeholder="A. Materno" class="form-control">        
             </div>
 
             <div class="form-group">
-                    <input type ="number" name="Carrera" placeholder="Carrera" class="form-control">        
+                    <input type ="number" name="Carrera"    placeholder="Carrera"    class="form-control">        
             </div>
 
             <div class="form-group">
-                    <input type ="number" name="Turno" placeholder="Turno" class="form-control">        
+                    <input type ="number" name="Turno"      placeholder="Turno"      class="form-control">        
             </div>
 
             <div class="form-group">
                     <input type ="number" name="No_Control" placeholder="No_Control" class="form-control">        
             </div>
+
             <button type="submit" class="btn btn-primary">
                 save
             </button>
+
+            <a href= "/turno" class="btn btn-info">Turno</a>
+
             <!--para recibir los datos en  navegador manda los datos al servidor convierte en formato de objeto 
             y asi insertarlos en la base de datos. por el moento el servidor no va a enter lo datos y es necesario
             configurarlo en app.js seccion setting-->

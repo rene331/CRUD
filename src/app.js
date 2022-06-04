@@ -3,7 +3,8 @@ const express = require ('express');
 const path = require ('path');// el modulo path se encarga de unir directorios
 const morgan = require('morgan');
 const mysql = require ('mysql')
-const myConnection = require ('express-myconnection');
+const myConnection = require ('express-myconnection');//myConnection atravez del middleware esta poblando al 
+//objeto req un  metod nuevo llamado "req.getConnection" en customerControler
 
 const app = express();//inicializacion de express
 
@@ -36,14 +37,13 @@ extended estara en false por que no enviara imagenes, ni datos codificados*/
 
 //routers
 
-//--aplicacion usa('cada vez que alguien este en la raiz', ejecuta lo siguiente rutas)
 app.use('/', customerRoutes);
-
+//--aplicacion usa('cada vez que alguien este en la raiz', ejecuta lo siguiente rutas)
 
 // static files
-//--son archivos complementos(imagenes, framework)
-app.use(express.static(path.join(__dirname,'public')));
 
+app.use(express.static(path.join(__dirname,'public')));
+//--son archivos complementos(imagenes, framework)
 
 //inicializando el servidor
 app.listen (app.get('port'), () => {  //inicializar el server
