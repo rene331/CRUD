@@ -13,18 +13,27 @@ router.get('/', customerController.list);
 //esto sera reemplazaro el  .list (la funcion) de archivo customerControler
 //cuando reciba la ruta inicial(al servidor), lo va a manejar una funcion 
 
-router.post('/add',customerController.save);
-//router escucha a travez del metodo post, la ruta nueva llamada "add" y cuando lo escuches
-//se encarga de recibir datos
-router.get('/delete/:Id_alt',customerController.delete);
-//cuando pidan un '/delete'
+router.post('/add', customerController.save);
+//router escucha a travez del metodo post, la ruta  llamada "add".
+//           RUTA  +  FUNCION
+//se encarga de recibir datos.
+
+router.get('/delete/:Id_alt', customerController.delete);
+//cuando te pidan atraves del metodo get un '/delete' vas a ejecuTAR la funcion "customerController.delete"
 //al concatenar se le conoce como parametro de la ruta
 
 router.get('/update/:Id_alt', customerController.edit);
-router.post('/update/:Id_alt', customerController.update);
 
-router.get('/turno/:Id_tno', customerController.edit);
-router.post('/turno/:Id_tno', customerController.update);
+router.post('/update/:Id_alt', customerController.update);
+//en '/update/:Id_alt' la seccion "/:Id_alt" se le conoce como parametro de la ruta.
+
+
+router.get('/turno', customerController.lista);
+
+
+    /*document.getElementById("Save").submit();*/
+router.post('/addTno', customerController.saveTno);
+//router.post('/turno/:Id_tno', customerController.update);
 
 
 module.exports = router;//se exporta 

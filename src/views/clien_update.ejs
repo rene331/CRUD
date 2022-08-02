@@ -17,34 +17,54 @@
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-buddy">
-                        <form action="/update/<%= data.Id_alt %>" method="post">  
+                        <form action="/update/<%= data.Id_alt %>" method="get">  
 
-                                <div class="form-group">
-                                    <input type ="text" name="Nombres" value="<%= data.Nombres %>" class="form-control">   
-                                </div>
-                    
-                                <div class="form-group">
-                                    <input type ="text" name="Ap_Paterno" value="<%= data.A_Paterno %>" class="form-control"> 
-                                </div>
-                    
-                                <div class="form-group">
-                                    <input type ="text" name="Ap_Materno" value="<%= data.A_Materno %>" class="form-control">        
-                                </div>
-                    
-                                <div class="form-group">
-                                    <input type ="number" name="Carrera" value="<%= data.Carrera %>" class="form-control">        
-                                </div>
-                    
-                                <div class="form-group">
-                                    <input type ="number" name="Turno" value="<%= data.Turno %>" class="form-control">        
-                                </div>
-                    
-                                <div class="form-group">
-                                    <input type ="number" name="No_Control" value="<%= data.No_Control %>" class="form-control">        
-                                </div>
-                                <button type="submit" class="btn btn-primary">
-                                    Editar
-                                </button>
+                            <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr><!--cabecera de la tabla-->
+                                            <th>No.</th>
+                                            <th>No. Control</th>
+                                            <th>Nombres</th>
+                                            <th>Carrera</th>
+                                            <th>Turno</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- se tiene que recorer un arreglo, se utiliza un "ciclo for" para  saber si hay datos, 
+                                        si los hay se van a mostrar encaso de que no los tenga puede ocurrir un error.
+                
+                                        1. se valida hay datos 
+                                          NOTA: esta seccion hace un recorrido  de "data" datos almacenados en la base de datos -->
+                                        
+                                                <!--sintaxis de EJS-->
+                                        <% if (data) {  %> <!--si tenemos dato-->
+                                            <% for (var i=0; i < data.length; i++) { %><!--desde el indice 0, hasta que se menor de la longitud de los datos-->
+                                                <!--aqui se hace el recorrido de los datos, para obtener cada datos-->
+                                                <tr>
+                                                    <td><%= (i + 1) %></td>
+                                                    <td><%= data[i].No_Control %></td><!--el igual despues de "%" interprete los datos y 
+                                                        no solo JS, mostar datos en pantalla-->
+                                                        
+                                                    <td><%= data[i].Nombres %></td>
+                                                    <td><%= data[i].Carrera %></td>
+                                                    <td><%= data[i].Turno %></td>
+                                                    <td>
+                                                        <a href= "/delete/<%= data[i].Id_alt %>" class="btn btn-danger">Delete</a><!--para poder eliminar 
+                                                        un dato, es necesario saber cual se va a  elimiar. se tienen que hacer una concatenacion con 
+                                                        el id de la celda, lo siguiente nos dara el numero ese numero "<%= data[i].Id_alt %>"-->
+                                                        
+                                                        <a href= "/update/<%= data[i].Id_alt %>" class="btn btn-info">Actualizar1</a>
+                                                    </td>
+                                                </tr>
+                                            <% } %>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                                    <a href= "/update/<%= data[i].Id_alt %>" class="btn btn-info">Editar</a>
+                                    
+                                    </div>
+                                
                                 
                         </form><!--(cuando sea ejecuta) indica la ruta del servidor a donde se va a mandar 
                                 estos datos -->

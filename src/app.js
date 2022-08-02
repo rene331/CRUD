@@ -8,14 +8,14 @@ const myConnection = require ('express-myconnection');//myConnection atravez del
 
 const app = express();//inicializacion de express
 
-//importando rutas
+//-------importando rutas
 const customerRoutes = require('./routes/customer');
 
 
-//setting
+//-------setting
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
-app.set('views',path.join (__dirname, 'views'));//modulo path de los siguientes directorios, 'dirnamen'da la ruta
+//app.set('views',path.join (__dirname, 'views'));//modulo path de los siguientes directorios, 'dirnamen'da la ruta
 												//de quien lo ejecuta y despues lo concatena con el 'views'
 
 //middleware (son funciones que se ejecutan antes que lleguen las peticiones de los usuarios)
@@ -32,20 +32,20 @@ app.use(myConnection(mysql,{
 el servidor sera el encargado de revisarlos y convertirlos*/
 
 app.use(express.urlencoded({extended : false}));
-/*desde el modulo de expres requerimos y un metodo que nos va permitir enterdertodos los datos que llegan del formulario.
-extended estara en false por que no enviara imagenes, ni datos codificados*/
+/*desde el modulo de expres requerimos un metodo que nos va permitir enterdertodos los datos que llegan del formulario.
+extended estara en false por que no enviara imagenes, ni datos codificados solo los datos del formulario*/
 
-//routers
+//-----routers
 
 app.use('/', customerRoutes);
 //--aplicacion usa('cada vez que alguien este en la raiz', ejecuta lo siguiente rutas)
 
-// static files
+//-----static files
 
 app.use(express.static(path.join(__dirname,'public')));
 //--son archivos complementos(imagenes, framework)
 
-//inicializando el servidor
+//----inicializando el servidor
 app.listen (app.get('port'), () => {  //inicializar el server
 	console.log('server on port 3000');//mensaje en consola
 }); 
