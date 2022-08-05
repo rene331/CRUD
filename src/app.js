@@ -15,8 +15,9 @@ const customerRoutes = require('./routes/customer');
 //-------setting
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
-//app.set('views',path.join (__dirname, 'views'));//modulo path de los siguientes directorios, 'dirnamen'da la ruta
+app.set('views',path.join (__dirname, 'views'));//modulo path es para unir los  directorios e identificar en que SO esta, 'dirnamen'da la ruta
 												//de quien lo ejecuta y despues lo concatena con el 'views'
+//C:\Users\hyper\Desktop\CRUDTEST\src\app.js
 
 //middleware (son funciones que se ejecutan antes que lleguen las peticiones de los usuarios)
 app.use(morgan('dev'));
@@ -42,7 +43,8 @@ app.use('/', customerRoutes);
 
 //-----static files
 
-app.use(express.static(path.join(__dirname,'public')));
+//app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static('C:\Users\hyper\Desktop\CRUDTEST\public'));
 //--son archivos complementos(imagenes, framework)
 
 //----inicializando el servidor

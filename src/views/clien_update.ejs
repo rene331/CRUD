@@ -17,8 +17,7 @@
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-buddy">
-                        <form action="/update/<%= data.Id_alt %>" method="get">  
-
+                        <form action="/update/<%= data.Id_alt %>" method="post">  
                             <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr><!--cabecera de la tabla-->
@@ -33,9 +32,9 @@
                                     <tbody>
                                         <!-- se tiene que recorer un arreglo, se utiliza un "ciclo for" para  saber si hay datos, 
                                         si los hay se van a mostrar encaso de que no los tenga puede ocurrir un error.
-                
+                                        
                                         1. se valida hay datos 
-                                          NOTA: esta seccion hace un recorrido  de "data" datos almacenados en la base de datos -->
+                                        NOTA: esta seccion hace un recorrido  de "data" datos almacenados en la base de datos -->
                                         
                                                 <!--sintaxis de EJS-->
                                         <% if (data) {  %> <!--si tenemos dato-->
@@ -54,7 +53,7 @@
                                                         un dato, es necesario saber cual se va a  elimiar. se tienen que hacer una concatenacion con 
                                                         el id de la celda, lo siguiente nos dara el numero ese numero "<%= data[i].Id_alt %>"-->
                                                         
-                                                        <a href= "/update/<%= data[i].Id_alt %>" class="btn btn-info">Actualizar1</a>
+                                                        <a href= "/update/<%= data[i].Id_alt %>" class="btn btn-info">Actualizar</a>
                                                     </td>
                                                 </tr>
                                             <% } %>

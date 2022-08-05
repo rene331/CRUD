@@ -8,19 +8,16 @@ controller.list = (req, res) => {//metodo
         conn.query('SELECT * FROM alt_clien', (err, alt_clien) =>{
          //--al tener la conexion se puede hacer una consulta, al hacer esto se puede tener un error o 
             //filas de la tabla(rows).            
-             if (err){//se puede tratar el error "si hay un error responde al navegador con un 
+            if (err){//se puede tratar el error "si hay un error responde al navegador con un 
                 res.json(err);//json y muestrame el error"
             }
            // console.log(alt_clien);//para ver el contenido de la base de datos en consola
             res.render('alt_clien', {//manda al navegador una vista
             data: alt_clien //se pasan a la vista los datos de la  tabla
-
-           });
+            });
         });
     });
 };
-
-
 
 controller.save = (req, res) =>{//funcion de express
     /*console.log(req.body);//aqui se van a estar recibiendo los datos del formulario que vienen del metodo "urlencoded"
@@ -55,9 +52,9 @@ controller.edit = (req, res) => {
 controller.update = (req, res) => {
     const id = req.params.Id_alt ; 
     const nCustomer = req.body ;
-    req.getConnection((err, conn) => {
+        req.getConnection((err, conn) => {
         conn.query ( 'UPDATE alt_clien set ? WHERE Id_alt = ?', [nCustomer, id], (err, alt_clien) =>{
-            console.log(alt_clien);
+            //console.log(alt_clien);
             res.redirect('/');
         });
     }); 
@@ -82,7 +79,7 @@ controller.lista = (req, res) => {//metodo
                 res.json(err);//json y muestrame el error"
             }
             //console.log(c_tno);//para ver el contenido de la base de datos en consola
-           res.render('CTurno', {//manda al navegador una vista
+            res.render('CTurno', {//manda al navegador una vista
             data1: c_tno //se pasan a la vista los datos de la  tabla
             
             });
@@ -97,10 +94,6 @@ controller.saveTno = (req, res) =>{
         res.redirect('/turno');//redirecciona a la ruta incial del servido y refresca los campos de formulario
         });
     })
-
 }
-
-
-
 //tendra una funcion
 module.exports = controller;
